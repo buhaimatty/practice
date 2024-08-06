@@ -12,6 +12,8 @@ def connect():
         crsr = connection.cursor()
         print('PostgreSQL database version: ')
         crsr.execute('SELECT version()')
+        # crsr.execute("show databases")
+
         db_version = crsr.fetchone()
         print(db_version)
         crsr.close()
@@ -21,7 +23,6 @@ def connect():
         if connection is not None:
             connection.close()
             print('Database connection terminated.')
-
 
 if __name__ == "__main__":
     connect()
