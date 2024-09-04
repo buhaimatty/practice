@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header header--sticky">
+      <div class="header__wrapper">
+        <div class="header__logo">
+          <a class="header__logo-link" href="{{ url_for('user_index') }}"
+            >Xchange</a
+          >
+        </div>
+
+        <nav class="header__navigation">
+          <ul class="header__pages">
+            <li class="header__page">
+              <a href="{{ url_for('user_index') }}" class="header__link"
+                >Files Index</a
+              >
+            </li>
+            {% if is_admin %}
+              <li class="header__page">
+                <a href="{{ url_for('users_index') }}" class="header__link"
+                  >Users Index
+                </a>
+              </li>
+            {% endif %}
+            <li class="header__page">
+              <a href="{{ url_for('logout') }}" class="header__link">Log Out</a>
+            </li>
+            <li class="header__page header__page--username">
+              {{ session.get('username') }}
+            </li>
+            <p>Is Admin: {{ session.get('is_admin') }}</p>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <div class="card">
+      <div class="card__wrapper">
+        <h1 class="card__heading">YEPPY</h1>
+
+        <!-- Log Out Button -->
+        <form method="GET" action="{{ url_for('logout') }}">
+          <button type="submit">Log Out</button>
+        </form>
+
+        <form method="GET" action="{{ url_for('user_index') }}">
+          <button type="submit">Let's go</button>
+        </form>
+
+        <!-- FOR TESTING -->
+        <form action="{{ url_for('promote_to_admin') }}" method="post">
+          <button type="submit">Become Admin</button>
+        </form>
+
+      </div>
+    </div>
+  </body>
+</html>

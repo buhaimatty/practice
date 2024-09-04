@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/signup.css') }}"
+    />
+  </head>
+  <body>
+    <div class="signup-card card">
+      <div class="signup-card__wrapper card__wrapper">
+        <h1 class="signup-card__heading card__heading">Sign up</h1>
+        <form class="signup-card__form form" method="POST">
+          <label class="signup-card__form-info card__info" for="username"
+            >Username</label
+          >
+          <input class="signup-card__form-input form-input" type="text"
+          id="username" name="username" placeholder="Enter your username.."
+          maxlength="19" / required>
+          <label
+            class="signup-card__form-input form-info card__info"
+            for="email"
+            >Email</label
+          >
+          <input class="form-input" type="text" id="email" name="email"
+          placeholder="EnterYourEmail@gmail.com" maxlength="19" / required>
+          <label
+            class="signup-card__form-info form-info card__info"
+            for="password"
+            >Password</label
+          >
+          <input class="form-input" type="password" id="password" name="password"
+          placeholder="- - - - - - - -" maxlength="19" / required>
+          <label
+            class="signup-card__form-info form-info card__info"
+            for="repeat_password"
+            >Confirm your password</label
+          >
+          <input class="form-input" type="password" id="repeat_password"
+          name="repeat_password" placeholder="- - - - - - - -" maxlength="19" /
+          required>
+
+          <p id="error-message" class="login-card__link-error error-message">
+            Password fields must match
+          </p>
+
+          <div class="signup-card__links-wrapper">
+            <a
+              href="{{ url_for('index') }}"
+              class="go-back-card__link link-back"
+              >go back</a
+            >
+            <button
+              type="submit"
+              id="submitBtn"
+              class="signup-card__btn btn-primary"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  </body>
+</html>

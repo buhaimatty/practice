@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greetings</title>
-</head>
-<body>
-    <h1>Hello there!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+  </head>
+  <body>
+    <div class="greetings-card card">
+      <div class="greetings-card__wrapper card__wrapper">
+        <h1 class="greetings-card__heading card__heading">Greetings</h1>
+        <p class="greetings-card__info card__info">
+          Lorem ipsum dolor sit amet, consectetur adipi scing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <p class="greetings-card__pre-action card__info">
+          Are you excited? Let's begin!
+        </p>
+        <div class="login-card__links-wrapper">
+          <a href="{{ url_for('signup') }}" class="signup-card__link link-secondary">Sign up</a>
+          <a href="{{ url_for('login') }}" class="greetings-card__link link-primary">Go log in</a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

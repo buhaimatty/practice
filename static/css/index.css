@@ -1,0 +1,21 @@
+.greetings-card__info {
+  margin-bottom: 1rem;
+}
+
+.greetings-card__pre-action {
+  margin-bottom: var(--basic-margin);
+}
+
+.login-card__links-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.greetings-card__link {
+  width: 12rem;
+}
+
+.greetings-card__link:hover {
+  padding: 0.8rem 1rem;
+}

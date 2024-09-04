@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+  <body>
+    <div class="login-card card">
+      <div class="login-card__wrapper card__wrapper">
+        <h1 class="login-card__heading card__heading">Log in</h1>
+        <form class="login-card__form form" method="POST">
+          <label class="login-card__form-info card__info" for="email"
+            >Email</label
+          >
+          <input class="login-card__form-input form-input" type="text"
+          id="email" name="email" placeholder="Enter your email.."
+          maxlength="19" / required>
+          <label class="login-card__form-info card__info" for="password"
+            >Password</label
+          >
+          <input class="form-input" type="password" id="password"
+          name="password" placeholder="- - - - - - - -" maxlength="19" /
+          required>
+          <label class="login-card__form-info card__info" for="repeat_password"
+            >Repeat your password</label
+          >
+          <input class="form-input" type="password" id="repeat_password"
+          name="repeat_password" placeholder="- - - - - - - -" maxlength="19" /
+          required>
+
+          <label class="remember-me__wrapper">
+            <input type="checkbox" name="remember_me" /> Remember Me
+          </label>
+
+          <p id="error-message" class="login-card__link-error error-message">
+            Password fields must match
+          </p>
+
+          <div class="login-card__links-wrapper">
+            <a
+              href="{{ url_for('index') }}"
+              class="go-back-card__link link-back"
+              >go back</a
+            >
+            <!-- <a href="#" class="login-card__link link-primary">Log in</a> -->
+            <button
+              type="submit"
+              id="submitBtn"
+              class="login-card__btn btn-primary"
+            >
+              Log in
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  </body>
+</html>

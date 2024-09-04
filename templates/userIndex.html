@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/userFile.css') }}"
+    />
+  </head>
+  <body>
+    {% include 'header.html' %}
+
+    <div class="file-management">
+      <section class="file-management__upload">
+        <h1 class="file-management__upload-title">Your File Uploader</h1>
+        <form
+          method="post"
+          class="file-management__form"
+          enctype="multipart/form-data"
+          action="{{ url_for('upload_file') }}"
+        >
+          <label class="file-management__label" for="file">
+            <input
+              class="file-management__input"
+              type="file"
+              name="file"
+              id="file"
+              hidden
+              required
+            />
+            <div class="file-management__input-area">
+              <p class="file-management__input-heading">
+                Drag and drop or <br />click here to upload
+              </p>
+              <p class="file-management__input-subheading">
+                Upload from your Desktop
+              </p>
+            </div>
+          </label>
+          <button class="file-management__button btn-primary" type="submit">
+            Upload
+          </button>
+        </form>
+      </section>
+
+      <section class="file-management__library">
+        <h1 class="file-management__library-title">Your Library</h1>
+        <p class="file-management__library-about">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          <br />eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <br />Ut enim ad minim veniam.
+        </p>
+        <table class="file-management__table">
+          <thead class="file-management__table-head">
+            <tr class="file-management__table-row">
+              <th class="file-management__table-header">No</th>
+              <th class="file-management__table-header">File Name</th>
+              <th class="file-management__table-header">Uploaded At</th>
+            </tr>
+          </thead>
+
+          {% if files %}
+              {% for file in files %}
+              <tr class="file-management__table-row">
+                  <td class="file-management__table-cell">{{ loop.index }}</td>
+                  <td class="file-management__table-cell">{{ file[0] }}</td>
+                  <td class="file-management__table-cell">{{ file[1].strftime('%d %b %Y') }}</td>
+              </tr>
+              {% endfor %}
+          {% else %}
+              <tr class="file-management__table-row">
+                  <td class="file-management__table-cell" colspan="3">No files found ;&#41;</td>
+              </tr>
+          {% endif %}
+
+          <!-- <tbody class="file-management__table-body">
+            <tr class="file-management__table-row">
+              <td class="file-management__table-cell">1</td>
+              <td class="file-management__table-cell">Drawings</td>
+              <td class="file-management__table-cell">Jun 3</td>
+            </tr>
+            <tr class="file-management__table-row">
+              <td class="file-management__table-cell">2</td>
+              <td class="file-management__table-cell">Ideas for site</td>
+              <td class="file-management__table-cell">Aug 19</td>
+            </tr>
+            <tr class="file-management__table-row">
+              <td class="file-management__table-cell">3</td>
+              <td class="file-management__table-cell">Plans for Autumn</td>
+              <td class="file-management__table-cell">31 Aug</td>
+            </tr>
+          </tbody> -->
+        </table>
+      </section>
+    </div>
+  </body>
+</html>

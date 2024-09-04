@@ -1,0 +1,39 @@
+.signup-card {
+  margin-top: 5%;
+}
+
+.signup-card__wrapper {
+  height: 36rem;
+}
+
+.signup-card__heading {
+  text-align: center;
+}
+
+.signup-card__links-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.signup-card__link {
+  width: 12rem;
+}
+
+.signup-card__link:hover {
+  padding: 0.8rem 1rem;
+}
+
+.signup-card__form-info {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+
+.sigpup-card__link {
+  width: 12rem;
+}
+
+.sigpup-card__link:hover {
+  padding: 0.8rem 1rem;
+}

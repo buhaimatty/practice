@@ -1,0 +1,123 @@
+.file-management {
+  padding: 3rem 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: var(--white); */
+}
+
+.file-management__upload,
+.file-management__library {
+  width: 100%;
+  margin-bottom: 2.6rem;
+}
+
+.file-management__upload-title,
+.file-management__library-title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: center;
+  color: var(--main-color);
+}
+
+.file-management__upload-title {
+  margin-bottom: 2rem;
+}
+
+.file-management__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-management__input-area {
+  width: 32rem;
+  height: 14rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 0.175rem dotted var(--main-color);
+  border-radius: 0.3rem;
+  margin-bottom: 1.6rem;
+
+  transition: ease 600ms;
+}
+
+.file-management__input-area:hover {
+  cursor: pointer;
+  width: 36rem;
+  height: 14rem;
+}
+
+.file-management__input-area:hover > p {
+  transform: scale(1.15);
+}
+
+.file-management__input-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--main-color);
+  margin-bottom: 0.8rem;
+}
+
+.file-management__input-subheading {
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+}
+
+.file-management__input-heading,
+.file-management__input-subheading {
+  transition: ease-in-out 600ms;
+}
+
+.file-management__library {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-management__library-about {
+  width: 40rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: var(--secondary-text);
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.file-management__library-title {
+  margin-bottom: 1.2rem;
+}
+
+.file-management__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.file-management__table-row {
+  border-bottom: 1px solid var(--basic-text);
+  transition: ease 600ms;
+}
+
+.file-management__table-row:hover {
+  background-color: var(--main-color-light);
+}
+
+.file-management__table-header {
+  font-weight: 600;
+  padding: 1rem;
+  color: var(--basic-text);
+}
+
+.file-management__table-cell {
+  padding: 1rem;
+}

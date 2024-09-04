@@ -1,0 +1,34 @@
+.login-card {
+  margin-top: 5%;
+}
+
+.login-card__wrapper {
+  height: 32rem;
+}
+
+.login-card__heading {
+  text-align: center;
+}
+
+.login-card__links-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.login-card__link {
+  width: 12rem;
+}
+
+.login-card__link:hover {
+  padding: 0.8rem 1rem;
+}
+ 
+.login-card__form-info {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.remember-me__wrapper {
+  margin-bottom: 1.2rem;
+}
