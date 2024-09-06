@@ -45,3 +45,12 @@
 .header__link:hover {
   color: var(--main-color);
 }
+
+.header__page--username {
+  transition: 600ms ease;
+}
+
+.header__page--username:hover {
+  cursor: pointer;
+  color: var(--main-color);
+}
