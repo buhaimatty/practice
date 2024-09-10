@@ -115,11 +115,33 @@ def upload_file():
         file = request.files['file']
         if file:
             file_name = file.filename
+            file_id = str(uuid.uuid4())
             created_at = datetime.now()
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
-            add_file(file_name, owner_id, created_at)
+
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_id))
+            # file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
+
+            add_file(file_id, file_name, owner_id, created_at)
             return redirect(url_for('user_index'))
     return redirect(url_for('login'))
+
+
+@app.route('/view_file/<file_name>/', methods=['GET'])
+def view_file(file_name):
+    owner_id = session.get('user_id')
+    file_unique_name = request.args.get('file_id')
+    if owner_id:
+        file_data = get_file_by_name_id(file_unique_name, owner_id)
+        if file_data:
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_unique_name)
+            file_content = read_file_content(file_path)
+            # FOR NOW -> files are not epty
+            return render_template('viewFile.html', file_data=file_data, file_content=file_content)
+        else:
+            flash("You don't have permission to view this file")
+            return redirect(url_for('user_index'))
+    else:
+        return redirect(url_for('login'))
 
 
 # FOR TESTING
@@ -143,12 +165,6 @@ def promote_to_admin():
             conn.close()
         return redirect(url_for('success'))  # redirect back to page
     return redirect(url_for('login'))
-
-
-@app.route('/header_test', methods=['GET', 'POST'])
-def header_test():
-    # username = session.get('username')
-    return render_template('header.html')
 
 
 if __name__ == "__main__":

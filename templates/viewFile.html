@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xchange</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/viewFile.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+  </head>
+  <body>
+    <header class="file-view-header">
+      <a href="{{ url_for('user_index') }}" class="file-view-back-button"
+        >← Back</a
+      >
+      <h1 class="file-view-title">{{ file_data[1] }}</h1>
+      <p class="file-view-date">{{ file_data[2].strftime('%d %b %Y') }}</p>
+    </header>
+    <main class="file-view-content">
+      <pre>{{ file_content }}</pre>
+    </main>
+  </body>
+</html>

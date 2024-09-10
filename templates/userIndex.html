@@ -76,37 +76,25 @@
             </tr>
           </thead>
 
-          {% if files %}
-              {% for file in files %}
-              <tr class="file-management__table-row">
-                  <td class="file-management__table-cell">{{ loop.index }}</td>
-                  <td class="file-management__table-cell">{{ file[0] }}</td>
-                  <td class="file-management__table-cell">{{ file[1].strftime('%d %b %Y') }}</td>
-              </tr>
-              {% endfor %}
-          {% else %}
-              <tr class="file-management__table-row">
-                  <td class="file-management__table-cell" colspan="3">No files found ;&#41;</td>
-              </tr>
+          {% if files %} {% for file in files %}
+          <tr class="file-management__table-row">
+            <td class="file-management__table-cell">{{ loop.index }}</td>
+            <td class="file-management__table-cell">
+              <a href="{{ url_for('view_file', file_name=file[1], file_id=file[0]) }}"
+                >{{ file[1] }}</a
+              >
+            </td>
+            <td class="file-management__table-cell">
+              {{ file[2].strftime('%d %b %Y') }}
+            </td>
+          </tr>
+          {% endfor %} {% else %}
+          <tr class="file-management__table-row">
+            <td class="file-management__table-cell" colspan="3">
+              No files found ;&#41;
+            </td>
+          </tr>
           {% endif %}
-
-          <!-- <tbody class="file-management__table-body">
-            <tr class="file-management__table-row">
-              <td class="file-management__table-cell">1</td>
-              <td class="file-management__table-cell">Drawings</td>
-              <td class="file-management__table-cell">Jun 3</td>
-            </tr>
-            <tr class="file-management__table-row">
-              <td class="file-management__table-cell">2</td>
-              <td class="file-management__table-cell">Ideas for site</td>
-              <td class="file-management__table-cell">Aug 19</td>
-            </tr>
-            <tr class="file-management__table-row">
-              <td class="file-management__table-cell">3</td>
-              <td class="file-management__table-cell">Plans for Autumn</td>
-              <td class="file-management__table-cell">31 Aug</td>
-            </tr>
-          </tbody> -->
         </table>
       </section>
     </div>

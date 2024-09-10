@@ -1,5 +1,7 @@
+from datetime import datetime
+import os
 import uuid
-from flask import redirect, flash, url_for, session
+from flask import app, redirect, flash, url_for, session
 from configparser import ConfigParser
 import psycopg2
 
@@ -85,42 +87,6 @@ def login_user(email, password, remember_me=False):
         return False;
 
 
-def get_user_files(owner_id):
-    conn = connect()
-    try:
-        with conn.cursor() as cur:
-            cur.execute("""
-                SELECT file_name, created_at
-                FROM public.files
-                WHERE owner_id = %s
-                ORDER BY created_at DESC
-            """, (owner_id,))
-            files = cur.fetchall()
-            return files
-    except Exception as error:
-        print(f"Error fetching user files: {error}")
-        return []
-    finally:
-        conn.close()
-
-
-def add_file(file_name, owner_id, created_at):
-    conn = connect()
-    try:
-        with conn.cursor() as cur:
-            file_id = str(uuid.uuid4())
-            cur.execute("""
-                INSERT INTO public.files (file_id, file_name, owner_id, created_at)
-                VALUES (%s, %s, %s, %s)
-            """, (file_id, file_name, owner_id, created_at))
-            conn.commit()
-            print(f"File added with ID {file_id}.")
-    except Exception as error:
-        print(f"Error adding file: {error}")
-    finally:
-        conn.close()
-
-
 def is_admin(user_id):
     conn = connect()
     try:
@@ -137,4 +103,67 @@ def is_admin(user_id):
         return False
     finally:
         conn.close()
+
+
+def get_user_files(owner_id):
+    conn = connect()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT file_id, file_name, created_at
+                FROM public.files
+                WHERE owner_id = %s
+                ORDER BY created_at DESC
+            """, (owner_id,))
+            files = cur.fetchall()
+            return files
+    except Exception as error:
+        print(f"Error fetching user files: {error}")
+        return []
+    finally:
+        conn.close()
+
+
+def add_file(file_id, file_name, owner_id, created_at):
+    conn = connect()
+    try:
+        with conn.cursor() as cur:
+            # file_id = str(uuid.uuid4())
+            cur.execute("""
+                INSERT INTO public.files (file_id, file_name, owner_id, created_at)
+                VALUES (%s, %s, %s, %s)
+            """, (file_id, file_name, owner_id, created_at))
+            conn.commit()
+            print(f"File added with ID {file_id}.")
+    except Exception as error:
+        print(f"Error adding file: {error}")
+    finally:
+        conn.close()
+
+
+def get_file_by_name_id(file_unique_name, owner_id):
+    conn = connect()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT file_id, file_name, created_at 
+                FROM public.files 
+                WHERE file_id = %s AND owner_id = %s
+            """, (file_unique_name, owner_id))
+            file = cur.fetchone()
+            return file
+    except Exception as error:
+        print(f"Error fetching file: {error}")
+        return None
+    finally:
+        conn.close()
+
+
+def read_file_content(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            return file.read()
+    except Exception as error:
+        print(f"Error reading file: {error}")
+        return None
 
