@@ -23,17 +23,28 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/header.css') }}"
     />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/viewFile.css') }}"
+    />
   </head>
   <body>
-    <header class="file-view-header">
-      <a href="{{ url_for('user_index') }}" class="file-view-back-button"
-        >← Back</a
-      >
-      <h1 class="file-view-title">{{ file_data[1] }}</h1>
-      <p class="file-view-date">{{ file_data[2].strftime('%d %b %Y') }}</p>
-    </header>
-    <main class="file-view-content">
-      <pre>{{ file_content }}</pre>
-    </main>
+    {% include 'header.html' %}
+
+    <div class="file-view">
+      <div class="file-view__wrapper">
+        <header class="file-view__header">
+          <a href="{{ url_for('user_index') }}" class="file-view__back-button"
+            >← back</a
+          >
+          <p class="file-view__title">{{ file_data[1] }}</p>
+          <p class="file-view__date">{{ file_data[2].strftime('%d %b %Y') }}</p>
+        </header>
+        <main class="file-view__content">
+          <div class="file-view__content-text">{{ file_content }}</div>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

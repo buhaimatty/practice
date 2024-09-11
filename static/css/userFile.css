@@ -121,3 +121,13 @@
 .file-management__table-cell {
   padding: 1rem;
 }
+
+.file-management__table-link {
+  text-decoration: none;
+  color: var(--secondary-text);
+  transition: ease-in 200ms;
+}
+
+.file-management__table-link:hover {
+  font-weight: 500;
+}

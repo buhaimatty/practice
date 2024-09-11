@@ -1,0 +1,71 @@
+.file-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-view__wrapper {
+  padding: 2% 12%;
+  border-radius: 0.3rem;
+}
+
+.file-view__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1.2rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: var(--white);
+}
+
+.file-view__back-button,
+.file-view__date {
+  padding: 1.2rem 2rem;
+}
+
+.file-view__back-button,
+.file-view__date {
+  font-weight: 500;
+}
+
+.file-view__back-button {
+  text-decoration: none;
+  padding-right: 2.12rem;
+  border-radius: 0.5rem 0 0 0;
+  transition: ease 600ms;
+}
+
+.file-view__back-button:hover {
+  background-color: var(--main-color-light);
+  color: var(--main-color);
+}
+
+.file-view__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.file-view__title:hover {
+  cursor: pointer;
+}
+
+.file-view__date:hover {
+  cursor: pointer;
+}
+
+.file-view__content {
+  text-align: justify;
+  min-height: 26rem;
+  padding: 1.8rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: var(--white);
+}
+
+.file-view__content-text {
+  width: 100%;
+  font-size: 1.25rem;
+  line-height: 1.8;
+}

@@ -80,7 +80,9 @@
           <tr class="file-management__table-row">
             <td class="file-management__table-cell">{{ loop.index }}</td>
             <td class="file-management__table-cell">
-              <a href="{{ url_for('view_file', file_name=file[1], file_id=file[0]) }}"
+              <a
+                class="file-management__table-link"
+                href="{{ url_for('view_file', file_name=file[1], file_id=file[0]) }}"
                 >{{ file[1] }}</a
               >
             </td>
